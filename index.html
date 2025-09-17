@@ -19,6 +19,14 @@
         <h1>STEP INTO THE <br><span>FUTURE OF GYMNASTICS</span></h1>
         <p style="font-size: 2vw; line-height: 6vh; color: #ffffffaf;">Join us with the gymnatics community in using NV <br>
         as your all-in-one digital companion </p>
+<div class="box" id="scroll-arrow">
+  <a href=".link" class="arrow-wrapper">
+    <i class="bi bi-arrow-down-short"></i>
+  </a>
+</div>
+
+        <div id="line">
+        </div>
         </div>
     <nav class="nav-menu" id="nav-menu">
         <div class="hamburger-toggle-button" id="close-button" style="position: absolute; top: 20px; right: 20px; left: unset; background: none;">
@@ -33,7 +41,7 @@
                 <span style="font-size: 1rem; font-weight: bold;">Sign In</span>
             </a>
             <p>Not registered?</p>
-            <a href="#">Sign Up here</a>
+            <a href="#" style="color: blue;">Sign Up here</a>
         </div>
         
         <ul style="margin-top: 30px;">
@@ -65,10 +73,21 @@
                     <li><a href="#"><i class="bi bi-person-vcard-fill"></i> Membership</a></li>
                     <li><a href="#"><i class="bi bi-person-plus-fill"></i> Registrations</a></li>
                     <li><a href="#"><i class="bi bi-calendar2-week-fill"></i> Competition Management</a></li>
-                    <li><a href="#"><i class="bi bi-award-fill"></i> Scoring</a></li>
                 </ul>
             </li>
 
+            <!-- ✅ Scoring moved out of Solutions and placed before Contact -->
+            <li class="menu-item-with-sub">
+                <a href="#" class="main-link">
+                    <i class="bi bi-award-fill" style="margin-right: 15px;"></i>Scoring
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="#"><i class="bi bi-clipboard-data-fill"></i> Scoreboards</a></li>
+                    <li><a href="#"><i class="bi bi-bar-chart-fill"></i> Judging</a></li>
+                </ul>
+            </li>
+
+            <!-- Contact now comes after Scoring -->
             <li class="menu-item-with-sub">
                 <a href="#" class="main-link">
                     <i class="bi bi-chat-dots-fill" style="margin-right: 15px;"></i>Contact
@@ -95,8 +114,7 @@
         </div>
     </nav>
     <div class="overlay" id="overlay"></div>
-
-<div id="page2">
+<div class="link" id="page2">
   <h2>One application, multiple disciplines!</h2>
   <p>
     With the expertise of the Nexus Vault team, trusted partner and the gymnastics <br>
@@ -215,69 +233,80 @@
         <h2 class="main-heading">Join our thriving gymnastics community with<br>thousands of passionate members!</h2>
         <div class="stats-container">
             <div class="stat-box">
-                <div class="stat-number">37+</div>
+                <div class="stat-number" data-target="37">0+</div>
                 <div class="stat-label">Federations</div>
             </div>
             <div class="stat-box">
-                <div class="stat-number">887+</div>
+                <div class="stat-number" data-target="887">0+</div>
                 <div class="stat-label">Clubs</div>
             </div>
             <div class="stat-box">
-                <div class="stat-number">456+</div>
+                <div class="stat-number" data-target="456">0+</div>
                 <div class="stat-label">Competitions</div>
             </div>
             <div class="stat-box">
-                <div class="stat-number">16 352+</div>
+                <div class="stat-number" data-target="16352">0+</div>
                 <div class="stat-label">Total Users</div>
             </div>
             <div class="stat-box">
-                <div class="stat-number">3 291+</div>
+                <div class="stat-number" data-target="3291">0+</div>
                 <div class="stat-label">Avg. Daily Visitors</div>
             </div>
         </div>
         <p style="font-size: 12px; opacity: 0.6; margin-top: 20px; text-align: right; padding-right:2vw;">Last update 12/01/2025</p>
     </section>
-
-    <section class="testimonials-section">
+<section class="testimonials-section">
+    <div class="carousel-content-wrapper"> 
         <div class="testimonials-container" id="testimonials-container">
             </div>
-        <div class="testimonial-nav">
-            <button class="nav-button" id="prev-btn">&lt;</button>
-            <span class="page-info" id="page-info"></span>
-            <button class="nav-button" id="next-btn">&gt;</button>
-        </div>
-    </section>
     </div>
-     <div id="page5">
-          <div class="up">
-                         <h3>
-             HOW CAN WE HELP?  
-          </h3>
-          <P>
-               We are here to help and answer all question you might have!<br>
-               We look forward to hearing from you!
-          </P>
-          <button>
-               Contact Us
-          </button>
-          </div>
-          <div class="down">
-               <h5>
-                    Nexus Vault is a proud <br>member of the Gymnastics<br>community.
-               </h5>
-               <p>support@nexus-vault.com
-                    <br>info@nexus-vault.com
-               </p>
-               <ul>
-                    <i class="bi bi-facebook"></i>
-                    <i class="bi bi-instagram"></i>
-                    <i class="bi bi-linkedin"></i>
-               </ul>
-          </div>
-     </div>
-     
-
+    <div class="testimonial-nav">
+        <button class="nav-button" id="prev-btn">&lt;</button>
+        <span class="page-info" id="page-info"></span>
+        <button class="nav-button" id="next-btn">&gt;</button>
+    </div>
+</section>
 </div>
+  <footer id="page5">
+    <div class="footer-container">
+        <div class="up">
+            <h3>HOW CAN WE HELP?</h3>
+            <p>
+                We are here to help and answer all questions you might have!<br>
+                We look forward to hearing from you!
+            </p>
+            <button class="contact-btn">
+                Contact Us
+            </button>
+        </div>
+
+        <div class="down">
+            <div class="down-col logo-col">
+                <span class="ac-icon"></span> 
+                <h5>
+                    NEXUS VAULT is a proud member of the **Start-It @KBC community**.
+                </h5>
+            </div>
+
+            <div class="down-col contact-col">
+                <p><span id="cap">NEXUS VAULT </span>
+                    <br>support@nexus-vault.com
+                    <br>info@nexus-vault.com
+                </p>
+            </div>
+
+            <div class="down-col social-col">
+                <a href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Ffeed%2F"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        &copy; NEXUS VAULT 2025
+    </div>
+</footer>
 </body>
 <script src="script/index.js"></script>
 </html>
