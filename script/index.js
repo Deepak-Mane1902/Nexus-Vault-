@@ -56,21 +56,60 @@
                 }
             });
         });
+
+        const scrollArrow = document.getElementById("scroll-arrow");
+
+scrollArrow.addEventListener("click", (e) => {
+  e.preventDefault();
+  document.querySelector("#page2").scrollIntoView({ behavior: "smooth" });
+
+  // Hide arrow after animation delay (~1s)
+  setTimeout(() => {
+    scrollArrow.style.opacity = "100%";
+    // scrollArrow.style.visibility = "hidden";
+  }, 1000);
+});
+
  
  // page2 Section
 
  const discs = document.querySelectorAll(".disc");
-  const cards = document.querySelectorAll(".card");
+const cards = document.querySelectorAll(".card");
 
-  discs.forEach(disc => {
-    disc.addEventListener("click", () => {
-      discs.forEach(d => d.classList.remove("active"));
-      cards.forEach(c => c.classList.remove("active"));
+// Arrange initial stack
+function arrangeCards(activeClass) {
+  cards.forEach(c => c.classList.remove("active", "behind1", "behind2"));
 
-      disc.classList.add("active");
-      document.querySelector(`.card.${disc.dataset.target}`).classList.add("active");
-    });
+  const activeCard = document.querySelector(`.card.${activeClass}`);
+  const allCards = Array.from(cards);
+
+  // Move active card to front
+  activeCard.classList.add("active");
+
+  // Get index of active card
+  const activeIndex = allCards.indexOf(activeCard);
+
+  // Assign behind1 and behind2 classes
+  const next1 = allCards[(activeIndex + 1) % allCards.length];
+  const next2 = allCards[(activeIndex + 2) % allCards.length];
+
+  if (next1) next1.classList.add("behind1");
+  if (next2) next2.classList.add("behind2");
+}
+
+// Click events
+discs.forEach(disc => {
+  disc.addEventListener("click", () => {
+    discs.forEach(d => d.classList.remove("active"));
+    disc.classList.add("active");
+
+    arrangeCards(disc.dataset.target);
   });
+});
+
+// Init default stack
+arrangeCards("acro");
+
 
   // #page4 section
     const testimonialsContainer = document.getElementById('testimonials-container');
@@ -163,3 +202,76 @@
                 updateCarousel();
             }
         });
+        
+        // --- Setup digits inside each stat box ---
+function setupDigits() {
+  document.querySelectorAll(".stat-number").forEach(stat => {
+    const rawText = stat.textContent.trim();
+    const plusSign = rawText.includes("+");
+    const numberOnly = rawText.replace(/\D/g, ""); // digits only
+
+    stat.textContent = ""; // clear content
+
+    // Wrap each digit
+    numberOnly.split("").forEach(d => {
+      const span = document.createElement("span");
+      span.className = "digit";
+      span.textContent = d;
+      stat.appendChild(span);
+    });
+
+    if (plusSign) {
+      const plus = document.createElement("span");
+      plus.textContent = "+";
+      stat.appendChild(plus);
+    }
+  });
+}
+
+
+// card animation scroll-left-to-right
+
+let direction = 1; // 1 = forward, -1 = backward
+
+function autoScroll() {
+  if (direction === 1 && currentPage < testimonials.length) {
+    currentPage++;
+  } else if (direction === 1 && currentPage >= testimonials.length) {
+    direction = -1;
+    currentPage--;
+  } else if (direction === -1 && currentPage > 1) {
+    currentPage--;
+  } else if (direction === -1 && currentPage <= 1) {
+    direction = 1;
+    currentPage++;
+  }
+  updateCarousel();
+}
+
+// Auto-scroll every 3s
+setInterval(autoScroll, 3000);
+
+// --- Animate last digit rolling ---
+function animateNumber(el, target, duration = 2000) {
+    let start = 0;
+    let increment = target / (duration / 50); // update every 50ms
+    let timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+            start = target;
+            clearInterval(timer);
+        }
+        // Format numbers with space for thousands
+        el.innerText = Math.floor(start).toLocaleString('en-US') + '+';
+    }, 50);
+}
+
+// Start animation after 10 seconds
+setTimeout(() => {
+    document.querySelectorAll('.stat-number').forEach(el => {
+        const target = parseInt(el.getAttribute('data-target'));
+        animateNumber(el, target);
+    });
+}, 3000);
+
+
