@@ -20,7 +20,7 @@
         <p style="font-size: 2vw; line-height: 6vh; color: #ffffffaf;">Join us with the gymnatics community in using NV <br>
         as your all-in-one digital companion </p>
 <div class="box" id="scroll-arrow">
-  <a href=".link" class="arrow-wrapper">
+  <a href="#page2" class="arrow-wrapper">
     <i class="bi bi-arrow-down-short"></i>
   </a>
 </div>
@@ -114,8 +114,12 @@
         </div>
     </nav>
     <div class="overlay" id="overlay"></div>
-<div class="link" id="page2">
-  <h2>One application, multiple disciplines!</h2>
+
+
+
+<div id="page2">
+         <div class="header-banner">
+        <h2>One application, multiple disciplines!</h2>
   <p>
     With the expertise of the Nexus Vault team, trusted partner and the gymnastics <br>
     community, we bring you the most precise, seamless experience across all disciplines and <br>
@@ -123,92 +127,110 @@
     <span>
       Feel the passion, immerse the audience, and experience gymnastics like never before!
     </span>
-  </p>
-
-  <div class="cards-container">
-    <!-- ACRO -->
-    <div class="card acro active">
-      <h3>Acrobatic Gymnastics</h3>
-      <div class="btns">
-        <button>Membership</button>
-        <button>Membership Registrations</button>
-        <button>Advanced Registrations</button>
-        <button>Competition Administrations</button>
-        <button>Tariff Sheets</button>
-        <button>Judges Screens</button>
-        <button>Live Scoreboards</button>
-        <button>Live Competition Information</button>
-        <button>Real-time Judging</button>
-      </div>
+  </p>      
     </div>
 
-    <!-- WAG -->
-    <div class="card wag">
-      <h3>Women Artistic Gymnastics</h3>
-      <div class="btns">
-        <button>Membership</button>
-        <button>Membership Registrations</button>
-        <button>Advanced Registrations</button>
-        <button>Competition Administrations</button>
-        <button>Judges Screens</button>
-        <button>Live Scoreboards</button>
-        <button>Live Competition Information</button>
-      </div>
+    <div class="main-container">
+
+        <div class="card-container">
+
+            <div class="card acro-card active" data-discipline="ACRO">
+                <div class="card-title">Acrobatic Gymnastics</div>
+                <div class="button-grid">
+                    <button>Membership</button>
+                    <button>Membership Registrations</button>
+                    <button>Advanced Registrations</button>
+                    <button>Competition Administrations</button>
+                    <button>Tariff Sheets</button>
+                    <button>Judges Screens</button>
+                    <button>Live Scoreboards</button>
+                    <button>Live Competition Information</button>
+                    <button>Real-time Judging</button>
+                </div>
+            </div>
+
+            <div class="card wag-card" data-discipline="WAG">
+                <div class="card-title">Women Artistic Gymnastics</div>
+                <div class="button-grid">
+                    <button>Membership</button>
+                    <button>Membership Registrations</button>
+                    <button>Advanced Registrations</button>
+                    <button>Competition Administrations</button>
+                    <button>Judges Screens</button>
+                    <button>Live Scoreboards</button>
+                    <button>Live Competition Information</button>
+                </div>
+            </div>
+
+            <div class="card mag-card" data-discipline="MAG">
+                <div class="card-title">Men Artistic Gymnastics</div>
+                <div class="button-grid">
+                    <button>Membership</button>
+                    <button>Membership Registrations</button>
+                    <button>Advanced Registrations</button>
+                    <button>Competition Administrations</button>
+                    <button>Judges Screens</button>
+                    <button>Live Scoreboards</button>
+                    <button>Live Competition Information</button>
+                </div>
+            </div>
+
+            <div class="card rhy-card" data-discipline="RHY">
+                <div class="card-title">Rhythmic Gymnastics</div>
+                <div class="button-grid">
+                    <button>Membership</button>
+                    <button>Membership Registrations</button>
+                    <button>Advanced Registrations</button>
+                    <button>Competition Administrations</button>
+                    <button>Judges Screens</button>
+                    <button>Live Scoreboards</button>
+                    <button>Live Competition Information</button>
+                </div>
+            </div>
+
+            <div class="card tra-card" data-discipline="TRA">
+                <div class="card-title">Trampoline / Tumbling / DMT</div>
+                <div class="button-grid">
+                    <button>Membership</button>
+                    <button>Membership Registrations</button>
+                    <button>Advanced Registrations</button>
+                    <button>Competition Administrations</button>
+                    <button>Judges Screens</button>
+                    <button>Live Scoreboards</button>
+                    <button>Live Competition Information</button>
+                    <button>Element per Element Judging</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="discipline-nav">
+            <button class="nav-button active" data-discipline="ACRO">
+                <div class="icon-placeholder">🤸</div>
+                <span id='textNav'> ACRO</span>
+            </button>
+            <button class="nav-button" data-discipline="WAG">
+                <div class="icon-placeholder">🤸‍♀️</div>
+                <span id='textNav'>WAG</span>
+            </button>
+            <button class="nav-button" data-discipline="MAG">
+                <div class="icon-placeholder">🤸‍♂️</div>
+                <span id='textNav'>MAG</span>
+            </button>
+            <button class="nav-button" data-discipline="RHY">
+                <div class="icon-placeholder">💃</div>
+                <span id='textNav'>RHY</span>
+            </button>
+            <button class="nav-button" data-discipline="TRA">
+                <div class="icon-placeholder">🤾</div>
+                <span id='textNav'>TRA</span>
+            </button>
+        </div>
+
     </div>
 
-    <!-- MAG -->
-    <div class="card mag">
-      <h3>Men Artistic Gymnastics</h3>
-      <div class="btns">
-        <button>Membership</button>
-        <button>Membership Registrations</button>
-        <button>Advanced Registrations</button>
-        <button>Competition Administrations</button>
-        <button>Judges Screens</button>
-        <button>Live Scoreboards</button>
-        <button>Live Competition Information</button>
-      </div>
-    </div>
-
-    <!-- RHY -->
-    <div class="card rhy">
-      <h3>Rhythmic Gymnastics</h3>
-      <div class="btns">
-        <button>Membership</button>
-        <button>Membership Registrations</button>
-        <button>Advanced Registrations</button>
-        <button>Competition Administrations</button>
-        <button>Judges Screens</button>
-        <button>Live Scoreboards</button>
-        <button>Live Competition Information</button>
-      </div>
-    </div>
-
-    <!-- TRA -->
-    <div class="card tra">
-      <h3>Trampoline / Tumbling / DMT</h3>
-      <div class="btns">
-        <button>Membership</button>
-        <button>Membership Registrations</button>
-        <button>Advanced Registrations</button>
-        <button>Competition Administrations</button>
-        <button>Judges Screens</button>
-        <button>Live Scoreboards</button>
-        <button>Live Competition Information</button>
-        <button>Element per Element Judging</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bottom Icons -->
-  <div class="disciplines">
-    <div class="disc acro active" data-target="acro">ACRO</div>
-    <div class="disc wag" data-target="wag">WAG</div>
-    <div class="disc mag" data-target="mag">MAG</div>
-    <div class="disc rhy" data-target="rhy">RHY</div>
-    <div class="disc tra" data-target="tra">TRA</div>
-  </div>
 </div>
+
+
 <div id="page3">
      <div class="left">
           <ul>
