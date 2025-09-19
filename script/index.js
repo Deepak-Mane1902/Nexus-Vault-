@@ -70,45 +70,33 @@ scrollArrow.addEventListener("click", (e) => {
   }, 1000);
 });
 
- 
- // page2 Section
+//page2 section
+        // --------------------------------------
+        // JavaScript (Handles card switching)
+        // --------------------------------------
+        document.addEventListener('DOMContentLoaded', () => {
+            const navButtons = document.querySelectorAll('.discipline-nav .nav-button');
+            const cards = document.querySelectorAll('.card-container .card');
 
- const discs = document.querySelectorAll(".disc");
-const cards = document.querySelectorAll(".card");
+            navButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const discipline = button.getAttribute('data-discipline');
 
-// Arrange initial stack
-function arrangeCards(activeClass) {
-  cards.forEach(c => c.classList.remove("active", "behind1", "behind2"));
+                    // 1. Deactivate all buttons and cards
+                    navButtons.forEach(btn => btn.classList.remove('active'));
+                    cards.forEach(card => card.classList.remove('active'));
 
-  const activeCard = document.querySelector(`.card.${activeClass}`);
-  const allCards = Array.from(cards);
+                    // 2. Activate the clicked button
+                    button.classList.add('active');
 
-  // Move active card to front
-  activeCard.classList.add("active");
-
-  // Get index of active card
-  const activeIndex = allCards.indexOf(activeCard);
-
-  // Assign behind1 and behind2 classes
-  const next1 = allCards[(activeIndex + 1) % allCards.length];
-  const next2 = allCards[(activeIndex + 2) % allCards.length];
-
-  if (next1) next1.classList.add("behind1");
-  if (next2) next2.classList.add("behind2");
-}
-
-// Click events
-discs.forEach(disc => {
-  disc.addEventListener("click", () => {
-    discs.forEach(d => d.classList.remove("active"));
-    disc.classList.add("active");
-
-    arrangeCards(disc.dataset.target);
-  });
-});
-
-// Init default stack
-arrangeCards("acro");
+                    // 3. Activate the corresponding card
+                    const targetCard = document.querySelector(`.card[data-discipline="${discipline}"]`);
+                    if (targetCard) {
+                        targetCard.classList.add('active');
+                    }
+                });
+            });
+        });
 
 
   // #page4 section
@@ -127,7 +115,7 @@ arrangeCards("acro");
         ];
         
         // Use a loop to add the 49 testimonials, alternating colors
-        for (let i = testimonials.length; i < 49; i++) {
+        for (let i = testimonials.length; i < 6; i++) {
             testimonials.push({
                 text: `This is a placeholder testimonial number ${i + 1}.`,
                 name: `User ${i + 1}`,
@@ -152,7 +140,7 @@ arrangeCards("acro");
                 if (testimonial.hasImage) {
                     avatarHtml = `<div class="card-avatar"><img src="${testimonial.imgSrc}" alt="${testimonial.name}"></div>`;
                 } else {
-                    avatarHtml = `<div class="ac-logo-circle"><span class="ac-logo">AC</span></div>`;
+                    avatarHtml = `<div class="ac-logo-circle"><span class="ac-logo">NV</span></div>`;
                 }
 
                 card.innerHTML = `
