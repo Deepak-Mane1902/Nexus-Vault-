@@ -489,28 +489,6 @@ html {
         .nav-button[data-discipline="RHY"].active { background-color: #e67e22; }
         .nav-button[data-discipline="TRA"].active { background-color: #2ecc71; }
 
-        /* Responsive adjustments for smaller screens */
-        @media (max-width: 768px) {
-            .card-container {
-                height: auto;
-                min-height: 400px;
-            }
-            .card, .card.active { /* Reset stacking/tilt effect on small screens for better visibility */
-                transform: none;
-                z-index: auto;
-            }
-            .card.active {
-                position: relative;
-            }
-            .card:not(.active) {
-                display: none;
-            }
-            .card-title { font-size: 1.5em; margin-bottom: 20px; }
-            .button-grid { gap: 10px; }
-            .button-grid button { padding: 8px 15px; }
-            .discipline-nav { flex-wrap: wrap; gap: 5px; padding: 5px; }
-            .nav-button { padding: 8px 10px; font-size: 0.7em;  }
-        }
 #page3{
      width: 100vw;
      height: 95vh;
@@ -652,8 +630,6 @@ line-height: 8vh;
             font-size: 16px;
             opacity: 0.8;
         }
-
-
 
 /* Testimonials Section */
 
@@ -1028,6 +1004,66 @@ line-height: 8vh;
     left: 20px;
     z-index: 1; 
 }
+/* --- Base Styles (Assuming your card width is 320px) --- */
+
+/* The element that contains and clips the carousel content */
+/* If you don't have a wrapper, apply these overflow/width properties to the direct parent of #testimonials-container */
+#testimonials-wrapper {
+    /* Example desktop width for 4 cards */
+    max-width: 1370px; /* Adjust this based on your 4-card layout */
+    overflow: hidden; /* CRITICAL: Hides the off-screen cards */
+    margin: 0 auto; 
+}
+
+/* The element that holds all the cards in a single row */
+#testimonials-container {
+    display: flex;
+    gap: 30px; /* Matches your JavaScript cardGap */
+    transition: transform 0.5s ease-in-out; 
+    width: fit-content; 
+}
+
+/* The individual card size */
+.testimonial-card {
+    min-width: 320px;
+    width: 320px;
+}
+
+/* ------------------------------------------------------------------- */
+
+/* --- Mobile Responsiveness Fix (For screens up to 768px wide) --- */
+
+@media (max-width: 768px) {
+    
+    /* 1. Adjust Card Width for smaller phones */
+    /* We make the card smaller so it fits nicely on a phone screen */
+    .testimonial-card {
+        /* Set card width to use up most of the screen width */
+        width: 5vw; 
+        min-width: 200px; /* Set a minimum size to prevent it from getting too small */
+    }
+    
+    /* 2. Set the Viewport to EXACTLY the width of one card */
+    #testimonials-wrapper {
+        /* This sets the clipping window to the width of one card (85vw) 
+           plus half of the gap (15px) to center the card on the viewport. */
+        max-width: calc(85vw + 15px); 
+        margin: 0 auto; /* Ensures the wrapper is centered */
+    }
+    
+    /* 3. Center the entire carousel area */
+    /* This is often necessary if the whole section is slightly misaligned */
+    .testimonial-carousel-section { 
+        padding: 0 10px; /* Example padding to prevent cards from touching screen edges */
+    }
+    
+    /* 4. Center the pagination/navigation */
+    .pagination-controls {
+        /* Assuming your controls are in a separate container */
+        width: calc(85vw + 15px); /* Match the wrapper width */
+        margin: 20px auto; 
+    }
+}
 .testimonial-nav {
     /* Container to hold the pagination controls */
     padding: 20px 0; /* Add vertical padding */
@@ -1078,8 +1114,8 @@ line-height: 8vh;
 
 
 #page5 {
-    min-height: 500px;
-    padding: 0 0 20px 0; 
+    height: auto;
+    padding: 0 0 0px 0; 
     background-color: #31486A; 
     color: #fff;
     display: flex;
@@ -1213,6 +1249,194 @@ line-height: 8vh;
     width: 100%;
     padding-top: 10px;
     font-size: 0.9em;
+    background-color: #1010107f;
     color: #ffffff99;
     text-align: center;
+}
+
+
+
+
+        /* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+
+    #page1 h1{
+        font-size: 5vh;
+        color: red;
+    }
+
+
+            /* Page 2 Responsive Section */
+
+            .header-banner h2{
+                font-size: 8vw;
+                padding-left: 40px;
+                text-align: start;
+            }
+            .header-banner p{
+                font-size: 3vw;
+                text-align: start;
+                padding-left: 40px;
+            }
+            .card-container {
+                height: auto;
+                width:100vw;
+                min-height: 400px;
+                padding-right: 60px;
+            }
+            .card, .card.active { /* Reset stacking/tilt effect on small screens for better visibility */
+                transform: none;
+                z-index: auto;
+            }
+            .card.active {
+                position: relative;
+            }
+            .card:not(.active) {
+                display: none;
+            }
+            .card-title { font-size: 2.5em; text-align: center;   margin-bottom: 20px ; }
+            .button-grid { gap: 10px; }
+            .button-grid button { padding: 8px 15px; }
+            .discipline-nav { flex-wrap: wrap; gap: 5px; padding: 5px;  margin-left: -50px;  }
+            .discipline-nav>button{
+                color: red;
+                border-radius: 50%;
+                background-color:transparent;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+                transition: 0.5s all ease-in-out;
+                &:hover{
+                    color: white;
+                    background-color: #2ecc71;
+                }
+}
+            .nav-button {  padding: 8px 10px; font-size: 0.7em;  }
+            #textNav{
+                font-size: 2vw;
+
+            }
+
+/* Page 3 Responsive Section */
+
+            #page3{
+                width: 100%;
+                height: 130vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+            #page3>.left>ul{
+                /* background-color: yellowgreen; */
+                width: 90vw;
+                /* line-height: 0vh; */
+                display: flex;
+                justify-items: center;
+                align-items: center;
+                text-align: center;
+                flex-direction: column;
+            }
+            #page3>.left>ul>h2{
+                margin-left: -30px;
+                margin-top: -20px;
+                font-size: 5.8vw;
+                line-height: 5vh;
+                padding-bottom: 4vh;
+            }
+            #page3>.left>ul>p{
+                margin-right: 10px;
+                text-align: start;
+                padding: 10px 10px;
+                font-size: 3vh;
+            }
+            #page3 .right{
+     width: 25%;
+     height: 70%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     position: relative;
+}
+
+#page3>.right>span{
+     position: absolute;
+     top: 1vw;
+     left: -20vw;
+     width: 250px;
+     height: 250px;
+     border-radius: 50%;
+     background-color: transparent;
+     border: 1px solid #10101071;
+     z-index: 1;
+}
+/* #page3>.right>span:nth-child(1){
+     position: absolute;
+} */
+#page3>.right>span:nth-child(2){
+     position: absolute;
+     top: 1vw;
+     left: -22vw;
+     background-color: transparent;
+     border: 1px solid #10101071;
+     z-index: 2;
+}
+#page3>.right>span:nth-child(3){
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 2.2vw;
+    left: -21vw;
+    background-image: url("https://www.acro-companion.com/assets/pics/home_page_images/big-image-circle-1000.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    z-index: 3;
+
+    /* Animation */
+    animation: floatZoom 6s ease-in-out infinite;
+}
+
+#page3>.right>span:nth-child(4){
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: 24vw;
+    left: 4vw;
+    background-image:
+    url("https://www.acro-companion.com/assets/pics/home_page_images/small-image-circle-600.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    z-index: 4;
+    animation: floatZoom 8s ease-in-out infinite;
+}
+
+/* Keyframes for smooth floating + zooming */
+@keyframes floatZoom {
+  0%   { transform: scale(1) translateY(0); }
+  50%  { transform: scale(1.05) translateY(-10px); }
+  100% { transform: scale(1) translateY(0); }
+}   
+
+/* page4 Responsive Section */
+
+        h2.main-heading {
+            font-size: 6vw;
+            font-weight: 600;
+            margin-top: -30px;
+            margin-bottom: 50px;
+            line-height: 1.2;
+            color: #ffffff96;
+        }
+        .testimonials-section{
+            padding-top: 0px;
+        }
+        
+        /* #page5 Responsive Section */
+
 }
