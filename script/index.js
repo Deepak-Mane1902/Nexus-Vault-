@@ -100,165 +100,200 @@ scrollArrow.addEventListener("click", (e) => {
 
 
   // #page4 section
-    const testimonialsContainer = document.getElementById('testimonials-container');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const pageInfo = document.getElementById('page-info');
+   // --- CONFIGURATION ---
+const DESIRED_TOTAL_CARDS = 20; 
+const VISIBLE_CARDS = 16;       // IMPORTANT: Set to the number of cards visible in your viewport
+const SLIDE_INTERVAL = 3000;    
 
-        const testimonials = [
-            { text: 'I love the program, and really think that it could be real help to the sport.', name: 'A. Alton', location: 'Hungary', role: 'International Judge', hasImage: true, imgSrc: 'https://i.ibb.co/Lp2p1yW/Screenshot-118.png', color: 'white' },
-            { text: 'Acro companion app is a great way to deal with the sport I love, without wasting time on the less fun part!', name: 'H. Diskin', location: 'Israel', role: 'Coach', hasImage: false, color: 'white' },
-            { text: 'Acro Companion is a huge time saver for coaches and judges alike in the sport.', name: 'M. Katsov', location: 'United States of America', role: 'Coach', hasImage: false, color: 'white' },
-            { text: 'Great application to reduce workload, stress and mistakes.', name: 'T. Longin', location: 'Austria', role: 'Coach & international judge', hasImage: true, imgSrc: 'https://i.ibb.co/3s68k47/Screenshot-119.png', color: 'white' },
-            { text: 'What an amazing application, quick and simple to use.', name: 'J. Dodd', location: 'Wales', role: 'Coach', hasImage: false, color: 'white' },
-            { text: 'Acro Companion saves time and avoid mistakes!', name: 'A. Rodriguez', location: 'Spain', role: 'Coach', hasImage: false, color: 'white' },
-        ];
-        
-        // Use a loop to add the 49 testimonials, alternating colors
-        for (let i = testimonials.length; i < 6; i++) {
-            testimonials.push({
-                text: `This is a placeholder testimonial number ${i + 1}.`,
-                name: `User ${i + 1}`,
-                location: `Country ${i + 1}`,
-                role: `Role ${i + 1}`,
-                hasImage: (i === 5 || i === 8), // Example of adding more images
-                imgSrc: 'https://i.ibb.co/Lp2p1yW/Screenshot-118.png',
-                color: 'white'
-            });
-        }
-        
-        const cardWidth = 320; 
-        const cardGap = 25;
-        let currentPage = 1;
-        
-        function renderAllTestimonials() {
-            testimonials.forEach(testimonial => {
-                const card = document.createElement('div');
-                card.className = `testimonial-card ${testimonial.color}-card`;
+const cardWidth = 320; 
+const cardGap = 10;
 
-                let avatarHtml = '';
-                if (testimonial.hasImage) {
-                    avatarHtml = `<div class="card-avatar"><img src="${testimonial.imgSrc}" alt="${testimonial.name}"></div>`;
-                } else {
-                    avatarHtml = `<div class="ac-logo-circle"><span class="ac-logo">NV</span></div>`;
-                }
+// --- DOM ELEMENTS, INITIAL DATA, and CARD GENERATION (all remain the same) ---
 
-                card.innerHTML = `
-                    ${avatarHtml}
-                    <div class="quote-icon">“</div>
-                    <p class="testimonial-text">${testimonial.text}</p>
-                    <div class="testimonial-meta">
-                        <div class="testimonial-name">${testimonial.name}</div>
-                        <div class="testimonial-location">${testimonial.location}</div>
-                        <div class="testimonial-role">${testimonial.role}</div>
-                    </div>
-                `;
-                testimonialsContainer.appendChild(card);
-            });
-        }
+const testimonialsContainer = document.getElementById('testimonials-container');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const pageInfo = document.getElementById('page-info');
 
-        function updateCarousel() {
-            const offset = -(currentPage - 1) * (cardWidth + cardGap);
-            testimonialsContainer.style.transform = `translateX(${offset}px)`;
-            
-            pageInfo.textContent = `${currentPage} / ${testimonials.length}`;
-            updateButtons();
-        }
+const testimonials = [
+    { text: 'I love the program, and really think that it could be real help to the sport.', name: 'A. Alton', location: 'Hungary', role: 'International Judge', hasImage: true, imgSrc: 'https://i.ibb.co/Lp2p1yW/Screenshot-118.png', color: 'white' },
+    { text: 'Acro companion app is a great way to deal with the sport I love, without wasting time on the less fun part!', name: 'H. Diskin', location: 'Israel', role: 'Coach', hasImage: false, color: 'white' },
+    { text: 'Acro Companion is a huge time saver for coaches and judges alike in the sport.', name: 'M. Katsov', location: 'United States of America', role: 'Coach', hasImage: false, color: 'white' },
+    { text: 'Great application to reduce workload, stress and mistakes.', name: 'T. Longin', location: 'Austria', role: 'Coach & international judge', hasImage: true, imgSrc: 'https://i.ibb.co/3s68k47/Screenshot-119.png', color: 'white' },
+    { text: 'What an amazing application, quick and simple to use.', name: 'J. Dodd', location: 'Wales', role: 'Coach', hasImage: false, color: 'white' },
+    { text: 'Acro Companion saves time and avoid mistakes!', name: 'A. Rodriguez', location: 'Spain', role: 'Coach', hasImage: false, color: 'white' },
+];
 
-        function updateButtons() {
-            prevBtn.disabled = currentPage === 1;
-            nextBtn.disabled = currentPage >= testimonials.length;
-            prevBtn.style.opacity = prevBtn.disabled ? '0.5' : '1';
-            nextBtn.style.opacity = nextBtn.disabled ? '0.5' : '1';
-        }
+const initialCount = testimonials.length;
+const placeholdersToAdd = DESIRED_TOTAL_CARDS - initialCount;
 
-        document.addEventListener('DOMContentLoaded', () => {
-            renderAllTestimonials();
-            updateCarousel();
-        });
-
-        nextBtn.addEventListener('click', () => {
-            if (currentPage < testimonials.length) {
-                currentPage++;
-                updateCarousel();
-            }
-        });
-
-        prevBtn.addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                updateCarousel();
-            }
-        });
-        
-        // --- Setup digits inside each stat box ---
-function setupDigits() {
-  document.querySelectorAll(".stat-number").forEach(stat => {
-    const rawText = stat.textContent.trim();
-    const plusSign = rawText.includes("+");
-    const numberOnly = rawText.replace(/\D/g, ""); // digits only
-
-    stat.textContent = ""; // clear content
-
-    // Wrap each digit
-    numberOnly.split("").forEach(d => {
-      const span = document.createElement("span");
-      span.className = "digit";
-      span.textContent = d;
-      stat.appendChild(span);
+for (let i = 0; i < placeholdersToAdd; i++) {
+    const currentTestimonialNumber = initialCount + i + 1; 
+    testimonials.push({
+        text: `This is a placeholder testimonial number ${currentTestimonialNumber}.`,
+        name: `User ${currentTestimonialNumber}`,
+        location: `Country ${currentTestimonialNumber}`,
+        role: `Role ${currentTestimonialNumber}`,
+        hasImage: (currentTestimonialNumber === 10 || currentTestimonialNumber === 15), 
+        imgSrc: 'https://i.ibb.co/Lp2p1yW/Screenshot-118.png',
+        color: 'white'
     });
+}
 
-    if (plusSign) {
-      const plus = document.createElement("span");
-      plus.textContent = "+";
-      stat.appendChild(plus);
-    }
-  });
+// --- CAROUSEL STATE ---
+let currentPage = 1; 
+let direction = 1; 
+
+// FIX: Calculate the maximum slide count (e.g., 20 total - 16 visible + 1 = 5 pages)
+const maxSlides = testimonials.length - VISIBLE_CARDS + 1;
+
+
+// --- RENDERING FUNCTION (Remains the same) ---
+function renderAllTestimonials() {
+    testimonials.forEach(testimonial => {
+        const card = document.createElement('div');
+        card.className = `testimonial-card ${testimonial.color}-card`;
+        
+        // ... (HTML rendering logic)
+        let avatarHtml = '';
+        if (testimonial.hasImage) {
+            avatarHtml = `<div class="card-avatar"><img src="${testimonial.imgSrc}" alt="${testimonial.name}"></div>`;
+        } else {
+            avatarHtml = `<div class="ac-logo-circle"><span class="ac-logo">NV</span></div>`;
+        }
+
+        card.innerHTML = `
+            ${avatarHtml}
+            <div class="quote-icon">“</div>
+            <p class="testimonial-text">${testimonial.text}</p>
+            <div class="testimonial-meta">
+                <div class="testimonial-name">${testimonial.name}</div>
+                <div class="testimonial-location">${testimonial.location}</div>
+                <div class="testimonial-role">${testimonial.role}</div>
+            </div>
+        `;
+        testimonialsContainer.appendChild(card);
+    });
 }
 
 
-// card animation scroll-left-to-right
+// --- CAROUSEL MOVEMENT AND PAGINATION FIX ---
+function updateCarousel() {
+    // Movement is one card at a time
+    const moveDistance = cardWidth + cardGap;
+    const offset = -(currentPage - 1) * moveDistance;
+    
+    testimonialsContainer.style.transform = `translateX(${offset}px)`;
+    
+    // FIX: Pagination shows current card / total number of cards
+    pageInfo.textContent = `${currentPage} / ${testimonials.length}`;
+    
+    updateButtons();
+}
 
-let direction = 1; // 1 = forward, -1 = backward
+function updateButtons() {
+    // FIX: Buttons are disabled when the last card (index maxSlides) is the first visible card.
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage >= maxSlides;
+    prevBtn.style.opacity = prevBtn.disabled ? '0.5' : '1';
+    nextBtn.style.opacity = nextBtn.disabled ? '0.5' : '1';
+}
 
 function autoScroll() {
-  if (direction === 1 && currentPage < testimonials.length) {
-    currentPage++;
-  } else if (direction === 1 && currentPage >= testimonials.length) {
-    direction = -1;
-    currentPage--;
-  } else if (direction === -1 && currentPage > 1) {
-    currentPage--;
-  } else if (direction === -1 && currentPage <= 1) {
-    direction = 1;
-    currentPage++;
-  }
-  updateCarousel();
+    // Auto-scroll checks against maxSlides
+    if (direction === 1 && currentPage < maxSlides) {
+        currentPage++;
+    } else if (direction === 1 && currentPage >= maxSlides) {
+        // Reached the end, switch direction to backward
+        direction = -1;
+        currentPage--;
+    } else if (direction === -1 && currentPage > 1) {
+        currentPage--;
+    } else if (direction === -1 && currentPage <= 1) {
+        // Reached the start, switch direction to forward
+        direction = 1;
+        currentPage++;
+    }
+    updateCarousel();
 }
 
-// Auto-scroll every 3s
-setInterval(autoScroll, 3000);
+// --- EVENT LISTENERS AND INITIALIZATION (Remains the same) ---
 
-// --- Animate last digit rolling ---
+document.addEventListener('DOMContentLoaded', () => {
+    renderAllTestimonials();
+    updateCarousel(); 
+    
+    setInterval(autoScroll, SLIDE_INTERVAL); 
+    
+    setupDigits(); 
+});
+
+nextBtn.addEventListener('click', () => {
+    // Manual movement
+    if (currentPage < maxSlides) {
+        currentPage++;
+        updateCarousel();
+        direction = 1; 
+    }
+});
+
+prevBtn.addEventListener('click', () => {
+    // Manual movement
+    if (currentPage > 1) {
+        currentPage--;
+        updateCarousel();
+        direction = -1; 
+    }
+});
+
+
+// ----------------------------------------------------------------------
+// --- STATS ANIMATION (Your original functions) ---
+// ... (The rest of your original stats functions here) ...
+// ----------------------------------------------------------------------
+
+function setupDigits() {
+    document.querySelectorAll(".stat-number").forEach(stat => {
+        const rawText = stat.textContent.trim();
+        const plusSign = rawText.includes("+");
+        const numberOnly = rawText.replace(/\D/g, "");
+
+        stat.textContent = "";
+
+        numberOnly.split("").forEach(d => {
+            const span = document.createElement("span");
+            span.className = "digit";
+            span.textContent = d;
+            stat.appendChild(span);
+        });
+
+        if (plusSign) {
+            const plus = document.createElement("span");
+            plus.textContent = "+";
+            stat.appendChild(plus);
+        }
+    });
+}
+
 function animateNumber(el, target, duration = 2000) {
     let start = 0;
-    let increment = target / (duration / 50); // update every 50ms
+    let increment = target / (duration / 50);
     let timer = setInterval(() => {
         start += increment;
         if (start >= target) {
             start = target;
             clearInterval(timer);
         }
-        // Format numbers with space for thousands
         el.innerText = Math.floor(start).toLocaleString('en-US') + '+';
     }, 50);
 }
 
-// Start animation after 10 seconds
 setTimeout(() => {
     document.querySelectorAll('.stat-number').forEach(el => {
         const target = parseInt(el.getAttribute('data-target'));
-        animateNumber(el, target);
+        if (!isNaN(target)) {
+            animateNumber(el, target);
+        }
     });
 }, 3000);
 
