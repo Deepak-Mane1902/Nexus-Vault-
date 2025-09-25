@@ -9,6 +9,7 @@ body{
      height: 100%;
      font-family: Arial, Helvetica, sans-serif;
      color: #fff;
+    background-color: #1F1F23;
 }
 #main{
           overflow: hidden;
@@ -18,7 +19,7 @@ body{
         #page1 {
             width: 100%;
             height: 100vh;
-            background-color: #1e3554;
+            background-color:#274163;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -42,6 +43,7 @@ body{
         }
 
         #page1 h1 span {
+            /* color: #ECE852; */
             color: #ff8c42;
         }
 
@@ -281,7 +283,7 @@ html {
 
 .header-banner h2 {
   padding-left: 3.9vw;
-  color: #274163;
+  color: #2967b8;
   font-size: 3vw;
   margin-bottom: 10px;
 }
@@ -291,14 +293,14 @@ html {
     text-align: start;
   padding-left: 12.5vw;
   font-size: 1.3vw;
-  color: #444444c3;
+  color: #8d8b8bc3;
   margin-bottom: 40px;
 }
 
 .header-banner p span {
   display: block;
   margin-top: 10px;
-  color: #e74c3c;
+  color: #415c85;
   font-weight: bold;
 }
 
@@ -359,7 +361,7 @@ html {
         /* ----------------------------------------- */
         .acro-card {
             border-top: 5px solid #e74c3c;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.95) 40%, rgba(231, 76, 60, 0.5) 100%);
+            background: linear-gradient(to right, rgba(48, 47, 47, 0.95) 40%, rgba(231, 76, 60, 0.5) 100%);
             /* Position slightly off-center (Right for first card, like the screenshots suggest a slight shift) */
             transform: translateZ(-15px) scale(0.98) translateY(10px) translateX(3px);
             /* z-index adjusted so the first one appears at the bottom of the stack initially */
@@ -368,28 +370,28 @@ html {
 
         .wag-card {
             border-top: 5px solid #9b59b6;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.95) 40%, rgba(155, 89, 182, 0.5) 100%);
+            background: linear-gradient(to right, rgba(48, 47, 47, 0.95) 40%, rgba(155, 89, 182, 0.5) 100%);
             transform: translateZ(-10px) scale(0.99) translateY(5px) translateX(2px);
             z-index: 2;
         }
 
         .mag-card {
             border-top: 5px solid #6c5ce7;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.95) 40%, rgba(108, 92, 231, 0.5) 100%);
+            background: linear-gradient(to right, rgba(48, 47, 47, 0.95) 40%, rgba(108, 92, 231, 0.5) 100%);
             transform: translateZ(-5px) scale(0.99) translateY(2px) translateX(1px);
             z-index: 3;
         }
 
         .rhy-card {
             border-top: 5px solid #e67e22;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.95) 40%, rgba(230, 126, 34, 0.5) 100%);
+            background: linear-gradient(to right, rgba(48, 47, 47, 0.95) 40%, rgba(230, 126, 34, 0.5) 100%);
             transform: translateZ(-3px) scale(0.99) translateY(1px) translateX(0.5px);
             z-index: 4;
         }
 
         .tra-card {
             border-top: 5px solid #2ecc71;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.95) 40%, rgba(46, 204, 113, 0.5) 100%);
+            background: linear-gradient(to right, rgba(48, 47, 47, 0.95) 40%, rgba(46, 204, 113, 0.5) 100%);
             transform: translateZ(-1px) scale(0.99) translateY(0.5px) translateX(0.2px);
             z-index: 5;
         }
@@ -424,13 +426,13 @@ html {
         }
 
         .button-grid button {
-            background-color: white;
+            background-color: rgb(43, 42, 42);
             border: 2px solid #101010;
             padding: 10px 20px;
             border-radius: 5px;
             font-size: 0.95em;
             font-weight: 600;
-            color: #555;
+            color: #a49e9e;
             cursor: pointer;
             transition: background-color 0.2s, border-color 0.2s;
             white-space: nowrap;
@@ -472,7 +474,10 @@ html {
 }
 #textNav{
     font-size: 1vw;
-    color: #101010c5;
+    color: #dfdadac5;
+}
+.discipline-nav>.nav-button{
+    border: 1px solid rgb(17, 16, 16);
 }
 
         .nav-button .icon-placeholder {
@@ -503,7 +508,7 @@ html {
      justify-content: center;
 }
 #page3 h2{
-     color: #2A3B54;
+  color: #2967b8;
 font-size: 3.6vw;
 line-height: 8vh;
 
@@ -514,7 +519,7 @@ line-height: 8vh;
 }
 #page3 p{
      padding-top: 4vh;
-     color: #101010;
+     color: #a19494;
      display: flex;
      text-align: start;
    font-size: 1.5vw;  
@@ -537,7 +542,7 @@ line-height: 8vh;
      height: 400px;
      border-radius: 50%;
      background-color: transparent;
-     border: 1px solid #10101071;
+     border: 1px solid #5d5a5a71;
      z-index: 1;
 }
 /* #page3>.right>span:nth-child(1){
@@ -1261,9 +1266,13 @@ line-height: 8vh;
 @media (max-width: 768px) {
 
     #page1 h1{
-        font-size: 5vh;
-
+        font-size: 8vh;
+  
     }
+   #page1  #mob-p{
+        font-size: 4.5vw;
+        text-align: center;
+    }   
 
 
             /* Page 2 Responsive Section */
@@ -1440,4 +1449,3 @@ line-height: 8vh;
         /* #page5 Responsive Section */
 
 }
-
